@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Down time</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+       
+        <div class="cover">
+            <div class="text">We Are Coming to </div> 
+            <div class="dateE"> </div>
+
+            <div class="col">
+                <div class="col1"><input type="text" placeholder="days" name="days" id="" readonly value="0"><br> Days</div>
+              
+                <div class="col1"><input type="text" name="hours" placeholder="hours" id="" readonly value="0"><br> Hours</div>
+              
+                <div class="col1"><input type="text" name="mints" id="" placeholder="mints" readonly value="0"><br> Mints</div>
+              
+                <div class="col1"><input type="text" name="seconds" id="" placeholder="seconds" readonly value="0" ><br> Seconds</div>
+              
+            </div>
+
+        </div>
+
+
+        <script>
+            endDate = '3 march 2024 2:30 PM'
+            dateE=document.querySelector('.dateE').innerText= endDate;
+            input = document.querySelectorAll('input')
+
+          
+
+
+            function clock() {
+                const end = new Date(endDate)
+                const now = new Date()
+                const diff = (end - now) /1000;
+                
+           // days
+           input[0].value= Math.floor(diff/3600/24)
+
+           //hours
+           input[1].value= Math.floor (diff/3600)%24
+
+           //mints
+           input[2].value = Math.floor (diff/60 ) % 60
+           
+          //seconds
+           input[3].value = Math.floor (diff)%60
+
+
+           //if mints will went off to zero
+           if (input[2].value== 0) {
+
+    
+document.body.style.background='orange'
+document.querySelector('.text').innerText='Happy New Year'
+}
+            }
+            clock()
+
+       
+setInterval(() => {
+    clock()
+}, 1000);
+
+
+
+        </script>
+
+</body>
+</html>

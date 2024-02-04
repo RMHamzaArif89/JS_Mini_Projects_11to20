@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">Generate Paragraphs</div>
+        <div class="pa">
+            <label for="">Paragraphs:</label>
+            <input type="number" name="" placeholder="enter" id="number">
+            <button type="submit" class="generate">Generate</button>
+        </div>
+
+
+        <div class="con-text">
+           
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+
+        submit = document.querySelector('.generate')
+        amount = document.querySelector('#number')
+        text = document.querySelector('.con-text')
+
+
+
+
+        async function logMovies() {
+            const response = await fetch("text.json");
+            textArr = await response.json();
+            
+    
+            
+            generateText()
+          }
+          logMovies()
+        
+
+
+
+
+
+
+
+
+
+generateText=()=>{
+    
+
+
+    submit.addEventListener('click', function (e) {
+        submit.style.color = 'white'
+        e.preventDefault();
+        value = parseInt(amount.value);
+        random = Math.floor(Math.random() * textArr.length);
+
+
+        if (isNaN(value) || value < 0 || value > 8) {
+            text.innerHTML = textArr[0]
+        }
+        else {
+        
+            temptext = textArr.slice(0, value)
+    
+           temptext = temptext.map(function (item) {
+        
+                return `<p>${item}<br><br></p`
+                   
+
+            }).join('');
+            text.innerHTML=temptext
+          
+        }
+    })
+
+}
+
+
+    </script>
+
+</body>
+
+</html>
